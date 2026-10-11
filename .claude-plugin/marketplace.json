@@ -1,0 +1,12 @@
+{
+  "name": "paved-path",
+  "owner": { "name": "Brian Jenney" },
+  "description": "Brian Jenney's way of building with agents, packaged for every project.",
+  "plugins": [
+    {
+      "name": "paved-path",
+      "source": "./",
+      "description": "Bootstrap agent-ready repos, verify with evidence, run parallel agent builds, and get a build demo-ready."
+    }
+  ]
+}

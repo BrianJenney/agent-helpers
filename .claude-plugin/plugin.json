@@ -1,0 +1,7 @@
+{
+  "name": "paved-path",
+  "version": "1.0.0",
+  "description": "Make the right thing the easy thing: bootstrap agent-ready repos, verify with evidence, run parallel agent builds, and get a build demo-ready.",
+  "author": { "name": "Brian Jenney" },
+  "keywords": ["agents", "guardrails", "verification", "nextjs", "workflow"]
+}
