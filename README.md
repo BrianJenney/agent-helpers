@@ -1,4 +1,8 @@
-# paved-path
+# agent-helpers
+
+This repo is a Claude Code plugin marketplace. Its first plugin is **paved-path**.
+
+## paved-path
 
 A Claude Code plugin for building with agents the way Brian Jenney builds: make the right thing the easy thing, prove every change with evidence, and run many agents at once without a mess.
 
@@ -30,8 +34,8 @@ Corrected twice for the same thing? Move the fix up the list.
 In any Claude Code session:
 
 ```
-/plugin marketplace add BrianJenney/paved-path
-/plugin install paved-path@paved-path
+/plugin marketplace add BrianJenney/agent-helpers
+/plugin install paved-path@agent-helpers
 ```
 
 To turn it on for everyone who opens a project, commit this to the project's `.claude/settings.json`:
@@ -39,15 +43,15 @@ To turn it on for everyone who opens a project, commit this to the project's `.c
 ```json
 {
   "extraKnownMarketplaces": {
-    "paved-path": { "source": { "source": "github", "repo": "BrianJenney/paved-path" } }
+    "agent-helpers": { "source": { "source": "github", "repo": "BrianJenney/agent-helpers" } }
   },
-  "enabledPlugins": { "paved-path@paved-path": true }
+  "enabledPlugins": { "paved-path@agent-helpers": true }
 }
 ```
 
 Cloud sessions do not install plugins from project settings on their own. Install it in the session, or ask an org admin to enable it org-wide.
 
-To try it without installing: `claude --plugin-dir ./paved-path`.
+To try it without installing, clone this repo and run `claude --plugin-dir ./agent-helpers`.
 
 ## Check it
 

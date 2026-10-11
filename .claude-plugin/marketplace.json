@@ -1,7 +1,9 @@
 {
-  "name": "paved-path",
-  "owner": { "name": "Brian Jenney" },
-  "description": "Brian Jenney's way of building with agents, packaged for every project.",
+  "name": "agent-helpers",
+  "owner": {
+    "name": "Brian Jenney"
+  },
+  "description": "Brian Jenney's plugins for building with agents.",
   "plugins": [
     {
       "name": "paved-path",
