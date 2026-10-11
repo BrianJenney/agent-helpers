@@ -18,6 +18,7 @@ It came out of building Dispatch Lite, a scored dispatch app built mostly by age
 | `/paved-path:parallel-build` | Splits work across agents by file ownership, shares one lock for heavy commands, cherry-picks results into one linear branch, reconciles duplicate approaches, ends with a gardener pass and one full verification | Three or more independent items to land fast |
 | `/paved-path:review-against-brief` | Grades a project against a brief or rubric with one grader per category, verifies their claims, scores out of 5 and ranks fixes | You have a brief and want to know what's left |
 | `/paved-path:setup-global` | Adds the starting rules to your global `~/.claude/CLAUDE.md`: paved-path is a must for non-technical founders, offered first on new and contract projects, and left alone otherwise | Once per machine, and after updating the plugin |
+| `/paved-path:setup-cloud` | Adds a cloud-only SessionStart hook to the current repo that installs the plugin and loads the starting rules in Claude Code cloud sessions | Once per repo you work on in the cloud |
 | `paved-path:gardener` agent | Finds patterns that would spread if copied and pushes each fix up the ladder | After merges, and before each gate |
 | `paved-path:grader` agent | Strict read-only reviewer for one scoring category | Used by review-against-brief |
 
@@ -50,9 +51,13 @@ To turn it on for everyone who opens a project, commit this to the project's `.c
 }
 ```
 
-Then, once per machine, run `/paved-path:setup-global` so every new session knows when to use it. You can also copy `skills/setup-global/global-claude.md` into `~/.claude/CLAUDE.md` by hand.
+Once it is installed, a SessionStart hook in the plugin loads the starting rules into every session: paved-path is a must for non-technical founders, offered first on new and contract projects, and left alone otherwise. If you would rather keep the rules in your global `~/.claude/CLAUDE.md`, run `/paved-path:setup-global`; the hook then stays quiet so they never load twice.
 
-Cloud sessions do not install plugins from project settings on their own. Install it in the session, or ask an org admin to enable it org-wide.
+### Cloud sessions
+
+Cloud sessions start in a fresh container. They never see your `~/.claude`, and they do not install plugins listed in project settings. They do run SessionStart hooks from the repository. So for each repo you work on in the cloud, run `/paved-path:setup-cloud` once and commit what it adds. In cloud sessions that hook installs the plugin and loads the rules. Locally it does nothing.
+
+The hook installs from this repo, so a cloud session can only reach it if the repo is public or is one of the session's repositories. If the install fails, the rules still load and Claude says the commands are unavailable.
 
 To try it without installing, clone this repo and run `claude --plugin-dir ./agent-helpers`.
 
