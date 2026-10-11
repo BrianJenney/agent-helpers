@@ -17,6 +17,7 @@ It came out of building Dispatch Lite, a scored dispatch app built mostly by age
 | `/paved-path:ship-check` | The pre-demo audit: secrets reaching the browser, real access rules, login throttling, demo data that goes stale overnight, prefetch N+1s, error pages, phone layout, speed, load, honest docs | The day before a demo, a review call or a launch |
 | `/paved-path:parallel-build` | Splits work across agents by file ownership, shares one lock for heavy commands, cherry-picks results into one linear branch, reconciles duplicate approaches, ends with a gardener pass and one full verification | Three or more independent items to land fast |
 | `/paved-path:review-against-brief` | Grades a project against a brief or rubric with one grader per category, verifies their claims, scores out of 5 and ranks fixes | You have a brief and want to know what's left |
+| `/paved-path:setup-global` | Adds the starting rules to your global `~/.claude/CLAUDE.md`: paved-path is a must for non-technical founders, offered first on new and contract projects, and left alone otherwise | Once per machine, and after updating the plugin |
 | `paved-path:gardener` agent | Finds patterns that would spread if copied and pushes each fix up the ladder | After merges, and before each gate |
 | `paved-path:grader` agent | Strict read-only reviewer for one scoring category | Used by review-against-brief |
 
@@ -48,6 +49,8 @@ To turn it on for everyone who opens a project, commit this to the project's `.c
   "enabledPlugins": { "paved-path@agent-helpers": true }
 }
 ```
+
+Then, once per machine, run `/paved-path:setup-global` so every new session knows when to use it. You can also copy `skills/setup-global/global-claude.md` into `~/.claude/CLAUDE.md` by hand.
 
 Cloud sessions do not install plugins from project settings on their own. Install it in the session, or ask an org admin to enable it org-wide.
 
